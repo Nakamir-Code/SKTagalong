@@ -15,9 +15,7 @@ namespace SKTagalong
             };
             if (!SK.Initialize(settings))
                 Environment.Exit(1);
-
-            Pose menuPose;
-
+                        
             // The Tagalong class including tagalong and billboard functionality
             Tagalong _tagalong = new Tagalong();
 
@@ -26,11 +24,11 @@ namespace SKTagalong
             // Core application loop
             while (SK.Step(() =>
             {
-                menuPose = _tagalong.ObjPose;
+                Pose menuPose = _tagalong.ObjPose;
 
                 UI.WindowBegin("Tagalong Window", ref menuPose, UIWin.Body);
 
-                UI.Label("Content Header");
+                UI.Label("Tagalong & Billboard");
                 UI.HSeparator();
                 UI.Text("This window should always follow you and face you!", TextAlign.TopCenter);
 
