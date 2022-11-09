@@ -24,7 +24,7 @@ namespace SKTagalong
             {
                 Pose menuPose = _tagalong.ObjPose;
 
-                UI.WindowBegin("Tagalong Window", ref menuPose, UIWin.Body);
+                UI.WindowBegin("Tagalong Window", ref menuPose, UIWin.Body, UIMove.None);
 
                 UI.Label("Tagalong & Billboard");
                 UI.HSeparator();
