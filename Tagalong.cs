@@ -6,7 +6,7 @@ namespace SKTagalong
 
     public static class UIExtension
     {
-        public static void WindowBegin(string text, ref Pose pose, ref Vec3 targetPose, Vec2 size, UIWin windowType = UIWin.Normal, float forwardDistance = 0.5f, float collisionRadius = 0.1f, float lerpBlend = 0.05f)
+        public static void WindowBegin(string text, ref Pose pose, ref Vec3 targetPos, Vec2 size, UIWin windowType = UIWin.Normal, float forwardDistance = 0.5f, float collisionRadius = 0.1f, float lerpBlend = 0.05f)
         {
             Pose head = Input.Head;
 
@@ -14,13 +14,13 @@ namespace SKTagalong
             Vec3 nextTargetPose = head.position + head.Forward * forwardDistance;
 
             // Tagalong, move the window along with user at the previous target.
-            pose.position = Vec3.Lerp(pose.position, targetPose, lerpBlend);
+            pose.position = Vec3.Lerp(pose.position, targetPos, lerpBlend);
 
             // Set the new target position for when it is outside the user's FOV
             // so that we lerp only when the new window position is out of range.
             if (!pose.position.InRadius(nextTargetPose, collisionRadius))
             {
-                targetPose = nextTargetPose;
+                targetPos = nextTargetPose;
             }
 
             // Billboarding always faces the user.
@@ -35,14 +35,14 @@ namespace SKTagalong
             redTransparent.Transparency = Transparency.Add;
             redTransparent["color"] = Color.Hex(0xFF0000FF);
 
-            Mesh.Sphere.Draw(blueTransparent, Matrix.TS(targetPose, collisionRadius));
+            Mesh.Sphere.Draw(blueTransparent, Matrix.TS(targetPos, collisionRadius));
             Mesh.Sphere.Draw(redTransparent, Matrix.TS(nextTargetPose, collisionRadius));
 #endif
 
             UI.WindowBegin(text, ref pose, size, windowType, UIMove.None);
         }
 
-        public static void WindowBegin(string text, ref Pose pose, ref Vec3 targetPose, UIWin windowType = UIWin.Normal, float forwardDistance = 0.5f, float collisionRadius = 0.1f, float lerpBlend = 0.05f)
-            => WindowBegin(text, ref pose, ref targetPose, Vec2.Zero, windowType, forwardDistance, collisionRadius, lerpBlend);
+        public static void WindowBegin(string text, ref Pose pose, ref Vec3 targetPos, UIWin windowType = UIWin.Normal, float forwardDistance = 0.5f, float collisionRadius = 0.1f, float lerpBlend = 0.05f)
+            => WindowBegin(text, ref pose, ref targetPos, Vec2.Zero, windowType, forwardDistance, collisionRadius, lerpBlend);
     }
 }

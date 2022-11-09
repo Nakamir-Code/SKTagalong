@@ -17,12 +17,12 @@ namespace SKTagalong
                 Environment.Exit(1);
 
             Pose menuPose = Pose.Identity;
-            Vec3 targetPose = Vec3.Zero;
+            Vec3 targetPos = Vec3.Zero;
 
             // Core application loop
             while (SK.Step(() =>
             {
-                UIExtension.WindowBegin("Tagalong Window", ref menuPose, ref targetPose, UIWin.Body);
+                UIExtension.WindowBegin("Tagalong Window", ref menuPose, ref targetPos, UIWin.Body);
                 UI.Label("Tagalong & Billboard");
                 UI.HSeparator();
                 UI.Text("This window should always follow you and face you!", TextAlign.TopCenter);
