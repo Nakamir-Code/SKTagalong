@@ -1,11 +1,11 @@
-using StereoKit;
-using System;
-
 namespace SKTagalong
 {
+    using StereoKit;
+    using System;
+
     internal class Program
     {
-        static void Main(string[] args)
+        static void Main(string[] _)
         {
             // Initialize StereoKit
             SKSettings settings = new SKSettings
@@ -15,23 +15,18 @@ namespace SKTagalong
             };
             if (!SK.Initialize(settings))
                 Environment.Exit(1);
-                        
-            // The Tagalong class including tagalong and billboard functionality
-            Tagalong _tagalong = SK.AddStepper<Tagalong>();
+
+            Pose menuPose = Pose.Identity;
+            Vec3 targetPose = Vec3.Zero;
 
             // Core application loop
             while (SK.Step(() =>
             {
-                Pose menuPose = _tagalong.ObjPose;
-
-                UI.WindowBegin("Tagalong Window", ref menuPose, UIWin.Body, UIMove.None);
-
+                UIExtension.WindowBegin("Tagalong Window", ref menuPose, ref targetPose, UIWin.Body);
                 UI.Label("Tagalong & Billboard");
                 UI.HSeparator();
                 UI.Text("This window should always follow you and face you!", TextAlign.TopCenter);
-
                 UI.WindowEnd();
-
             })) ;
             SK.Shutdown();
         }
