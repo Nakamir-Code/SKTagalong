@@ -34,7 +34,7 @@ namespace SKTagalong
             pose.orientation = Quat.LookAt(pose.position, head.position);
         }
 
-        public static void TagAlongEnd(ref Pose pose, ref Vec3 targetPos, ref Vec3 nextTargetPos, float collisionRadius = 0.15f)
+        public static void TagAlongEnd(ref Pose pose, ref Vec3 targetPos, ref Vec3 nextTargetPos, float collisionRadius = 0.2f)
         {
             // Set the new target position for when it is outside the user's FOV
             // so that we lerp only when the new window position is out of range.
