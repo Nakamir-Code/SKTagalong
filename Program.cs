@@ -17,9 +17,7 @@ namespace SKTagalong
                 Environment.Exit(1);
                         
             // The Tagalong class including tagalong and billboard functionality
-            Tagalong _tagalong = new Tagalong();
-
-            SK.AddStepper(_tagalong);
+            Tagalong _tagalong = SK.AddStepper<Tagalong>();
 
             // Core application loop
             while (SK.Step(() =>

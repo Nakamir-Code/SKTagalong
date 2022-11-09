@@ -18,7 +18,7 @@ namespace SKTagalong
         // the desired distance of the object on front of the user
         private float _desiredDistance = 0.5f;
 
-        // if max allowed distance for the menu from the desired position before being pulled back
+        // max allowed distance for the menu from the desired position before being pulled back
         private float _maxAllowedDistance = 0.3f;
 
         private bool _isLerping = false;
