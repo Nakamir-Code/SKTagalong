@@ -20,16 +20,14 @@ namespace SKTagalong
             float forwardDistance = 0.5f;
 
             // Set the starting pose of the menu
-            Vec3 menuPosition = head.position + head.Forward * forwardDistance;
-            Pose menuPose = new Pose(menuPosition, Quat.LookAt(menuPosition, head.position));
-            Vec3 targetPos = menuPosition;
+            Vec3 targetPos = head.position + head.Forward * forwardDistance;
+            Pose menuPose = new Pose(targetPos, Quat.LookAt(targetPos, head.position));
             Vec3 nextTargetPos = Vec3.Zero; // ignore, set inside TagAlong
 
             // Set the starting pose of the menu with an offset
             Vec2 offset = V.XY(15, -10) * U.cm;
-            Vec3 offsetMenuPosition = head.position + head.Forward * forwardDistance + head.Right * offset.x + head.Up * offset.y;
-            Pose offsetMenuPose = new Pose(offsetMenuPosition, Quat.LookAt(offsetMenuPosition, head.position));
-            Vec3 offsetTargetPos = offsetMenuPosition;
+            Vec3 offsetTargetPos = head.position + head.Forward * forwardDistance + head.Right * offset.x + head.Up * offset.y;
+            Pose offsetMenuPose = new Pose(offsetTargetPos, Quat.LookAt(offsetTargetPos, head.position));
             Vec3 offsetNextTargetPos = Vec3.Zero; // ignore, set inside TagAlong
 
             // Core application
